@@ -3,10 +3,10 @@
 // Creates an ICMP packet for ping with given sequence number.
 // @param packet A pointer to the packet structure to be filled.
 // @param sequence_number The sequence number to be used in the packet.
-static void create_packet(icmphdr_t *packet)
+static void create_packet(icmphdr_t *packet, const traceroute_options *options)
 {
     // Set packet header fields
-    packet->type = ICMP_ECHO;
+    packet->type = options->packet_type;
     packet->code = 0;
     packet->checksum = 0;
     packet->un.echo.id = swap_endianess_16(getpid());
@@ -37,7 +37,7 @@ static bool send_probes(int sock, struct addrinfo *addr, const traceroute_option
         char buf[PACKET_SIZE];
 
         // Craft a traceroute packet and store it in the buffer
-        create_packet((icmphdr_t *)buf);
+        create_packet((icmphdr_t *)buf, options);
 
         // Get the current time for measuring round-trip time
         struct timeval start = get_current_time();

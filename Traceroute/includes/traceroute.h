@@ -34,7 +34,7 @@ typedef struct
 	unsigned long first_ttl;	  // the initial time-to-live value for packets
 	unsigned long max_ttl;		  // the maximum time-to-live value for packets
 	unsigned long probes_per_ttl; // the number of probes sent per time-to-live value
-	unsigned long packet_type;
+	unsigned long packet_type;	  // the type of ICMP packet to send
 } traceroute_options;
 
 // Traceroute

@@ -24,19 +24,19 @@ void print_help_text()
 {
     printf("Usage:\n");
     printf("  ./traceroute host\n");
+    printf("Arguments:\n");
+    printf("  host        The host to traceroute.\n");
     printf("Mandatory Options:\n");
     printf("  --help      Print this help text and exit.\n");
-    printf("Bonus Options:\n");
     printf("  -4          Use IPv4.\n");
+    printf("Bonus Options:\n");
     printf("  -I          Use ICMP ECHO for tracerouting.\n");
     printf("  -d          Enable socket level debugging.\n");
+    printf("  -q nqueries\n");
+    printf("      Set the number of probes per hop. Default is 3.\n");
     printf("  -f first_ttl\n");
     printf("      Start from the specified first_ttl hop (instead of 1).\n");
     printf("  -m max_ttl\n");
     printf("      Set the maximum number of hops (max TTL to be reached). Default is 30.\n");
-    printf("  -q nqueries\n");
-    printf("      Set the number of probes per hop. Default is 3.\n");
     printf("\n");
-    printf("Arguments:\n");
-    printf("  host        The host to traceroute.\n");
 }
