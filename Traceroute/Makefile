@@ -1,4 +1,4 @@
-NAME		= ft_traceroute
+NAME		= traceroute
 
 CFLAGS		= -Wall -Wextra -Werror -O3 -I./includes
 

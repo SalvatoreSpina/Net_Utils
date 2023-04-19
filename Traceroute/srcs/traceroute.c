@@ -72,10 +72,14 @@ static bool send_probes(int sock, struct addrinfo *addr, const traceroute_option
         char ipbuf[INET6_ADDRSTRLEN];
         inet_ntop(r_addr.sin_family, &r_addr.sin_addr, ipbuf, sizeof(ipbuf));
 
-        // Print the responding host's IP address if it differs from the previous hop
+
+        // Print the responding host's hostname if it differs from the previous hop
+        char hostname[NI_MAXHOST];
         if (!i || memory_regions_differ(&prev_addr, &r_addr, sizeof(r_addr)))
         {
-            printf(" %s", ipbuf);
+            (getnameinfo((struct sockaddr *)&r_addr, sizeof(r_addr), hostname, NI_MAXHOST, NULL, 0, 0) == 0)
+                ? printf(" %s (%s) ", hostname, ipbuf)
+                : printf(" %s", ipbuf);
         }
 
         // Print the round-trip time to the console
